@@ -17,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.doConnect.entity.Question;
-import com.doConnect.exception.QuestionNotFoundException;
-import com.doConnect.repository.QuestionRepository;
-
 
 
 
@@ -64,7 +60,7 @@ public class QuestionController {
 	@GetMapping("/deletequestionbyid")
 	public ResponseEntity<Map<String, Boolean>> deleteQuestionbyId(@PathVariable Long id) {
 		Question question = questionRepository.findById(id)
-				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
+				.orElseThrow(() -> new QuestionNotFoundException("Employee not exist with id :" + id));
 		
 		questionRepository.delete(question);
 		Map<String, Boolean> response = new HashMap<>();
@@ -84,7 +80,7 @@ public class QuestionController {
 	
 	@GetMapping("/getQuestionbytopic")
 	public List<Question> getQuestionbyTopic(String topic){
-		return questionRepository.findByTopic(topic);
+		return questionRepository.findByTopicIs(topic);
 	}
 	
 	@GetMapping("/getquestionbyid")
