@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.entity.User;
+import com.doConnect.entity.User;
 
 /**
  * @author : Edward Lam
