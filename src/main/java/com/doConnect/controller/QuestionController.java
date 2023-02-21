@@ -65,7 +65,7 @@ public class QuestionController {
 	@GetMapping("/deletequestionbyid")
 	public ResponseEntity<Map<String, Boolean>> deleteQuestionbyId(@PathVariable Long id) {
 		Question question = questionRepository.findById(id)
-				.orElseThrow(() -> new QuestionNotFoundException("Employee not exist with id :" + id));
+				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
 		
 		questionRepository.delete(question);
 		Map<String, Boolean> response = new HashMap<>();
