@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.doConnect.entity.Question;
+import com.doConnect.exception.QuestionNotFoundException;
 import com.doConnect.repository.QuestionRepository;
-
-import exception.QuestionNotFoundException;
 
 
 
