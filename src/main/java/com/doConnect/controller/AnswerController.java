@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +29,8 @@ import com.doConnect.repository.QuestionRepository;
  */
 public class AnswerController {
 	
-	AnswerRepository answerRepository;
+	@Autowired
+	private AnswerRepository answerRepository;
 	
 	@GetMapping("/getallanswers")
 	public List<Answer> getAllAnswer(){
