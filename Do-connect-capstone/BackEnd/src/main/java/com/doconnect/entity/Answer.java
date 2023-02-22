@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,7 +38,7 @@ public class Answer {
 	private String datetime;
 	
 	@ManyToOne
-	@Column(name = "question")
+	@JoinColumn(name = "question")
 	private Question question;
 	
 	// @OneToOne

@@ -84,7 +84,7 @@ public class QuestionController {
 	
 	@GetMapping("/getQuestionbytopic")
 	public List<Question> getQuestionbyTopic(String topic){
-		return questionRepository.findByTopicIs(topic);
+		return questionRepository.findByTopic(topic);
 	}
 	
 	@GetMapping("/getquestionbyid")

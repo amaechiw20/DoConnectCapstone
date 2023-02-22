@@ -20,6 +20,6 @@ import com.doConnect.entity.Question;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Long>{
 	List<Question> findByStatusFalse();
-	List<Question> findByTopicIs(String topic);
+	List<Question> findByTopic(String topic);
 	
 }

@@ -91,12 +91,12 @@ public class UserController {
 	
 	@GetMapping("/getbyname")
 	public List<User> getbyName(String name) {
-		return userRepository.findByNameIs(name);
+		return userRepository.findByName(name);
 	}
 	
 	@GetMapping("/getbyalluserType")
 	public List<User> getbyAllUserType(String userType){
-		return userRepository.findByTypeIs(userType);
+		return userRepository.findByUserType(userType);
 	}
 	
 	@GetMapping("/loginVerify")
