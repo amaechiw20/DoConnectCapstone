@@ -1,7 +1,5 @@
 package com.doConnect.filter;
 
-import com.cogent.service.CustomUserDetailsService;
-import com.cogent.util.JwtUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,6 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.doConnect.service.CustomUserDetailsService;
+import com.doConnect.util.JwtUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

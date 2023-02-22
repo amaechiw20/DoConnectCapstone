@@ -3,11 +3,12 @@
  */
 package com.doConnect.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.doConnect.entity.User;
 import com.doConnect.exception.UserNotFoundException;
 import com.doConnect.repository.UserRepository;
+import com.doConnect.util.JwtUtil;
+
+import com.doConnect.entity.AuthRequest;
 
 /**
  * @author : Edward Lam
@@ -32,19 +36,25 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+    private AuthenticationManager authenticationManager;
+	
+	@Autowired
+    private JwtUtil jwtUtil;
+	
 	@GetMapping("/")
 	public void Home(){
 		
 	}
 	
 	@GetMapping("/adduser")
-	public void addUser() {
-		
+	public User addUser(@RequestBody User user) {
+		return userRepository.save(user);
 	}
 	
 	@GetMapping("/addnewuser")
-	public void addNewUser(){
-		
+	public User addNewUser(@RequestBody User user){
+		return userRepository.save(user);
 	}
 	
 	@GetMapping("/getLogin")
@@ -90,7 +100,14 @@ public class UserController {
 	}
 	
 	@GetMapping("/loginVerify")
-	public void userLoginVerify() {
-		
+	public String userLoginVerify(@RequestBody AuthRequest authRequest) throws Exception {
+		try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
+            );
+        } catch (Exception ex) {
+            throw new Exception("inavalid username/password");
+        }
+        return jwtUtil.generateToken(authRequest.getUserName());
 	}
 }
