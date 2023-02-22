@@ -20,4 +20,5 @@ import com.doConnect.entity.User;
 public interface UserRepository extends JpaRepository<User, Long>{
 	List<User> findByNameIs(String name);
 	List<User> findByTypeIs(String userType);
+	User findByUserName(String username);
 }

@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.doConnect.entity.User;
+import com.doConnect.exception.UserNotFoundException;
 import com.doConnect.repository.UserRepository;
-
-import exception.UserNotFoundException;
 
 /**
  * @author : Edward Lam
