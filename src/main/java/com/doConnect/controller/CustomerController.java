@@ -75,7 +75,7 @@ public class CustomerController {
 	
 	@GetMapping("/User/getbyalluserType")
 	public List<User> getUserbyName(String userType) {
-		return userRepository.findByTypeIs(userType);
+		return userRepository.findByUserType(userType);
 	}
 	
 	@GetMapping("/User/getbyid")
@@ -90,7 +90,7 @@ public class CustomerController {
 	
 	@GetMapping("/User/getbyalluserType")
 	public List<User> getallCustomer(String userType){
-		return userRepository.findByTypeIs(userType);
+		return userRepository.findByUserType(userType);
 	}
 	
 	@GetMapping ("/User/DeleteById")
@@ -149,7 +149,7 @@ public class CustomerController {
 	
 	@GetMapping("/Question/getQuestionbytopic")
 	public List<Question> getQuestionbyTopic(String topic) {
-		return questionRepository.findByTopicIs(topic);
+		return questionRepository.findByTopic(topic);
 	}
 	
 	@GetMapping("/Question/getquestionbyid")
