@@ -41,7 +41,7 @@
         <div>
             <h2>Login Now!</h2>
             <small class="text-danger">{{msg}}</small>
-            <form id="signupform" #loginform="ngForm" (ngSubmit)="loginUser()">
+            <form id="loginform" #loginform="ngForm" (ngSubmit)="loginUser()">
                 <div class="form-group">
                     <label for="username" class="label">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Username" name="username" [(ngModel)]="user.username" 

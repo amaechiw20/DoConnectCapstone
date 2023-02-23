@@ -1,9 +1,9 @@
-export class User {
+export class Admin {
     name:String;
     username:String;
     email: String;
     password: String;
-    usertype="User";
+    usertype="Admin";
 
     constructor(){}
 }
