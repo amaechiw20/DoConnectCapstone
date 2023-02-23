@@ -34,7 +34,8 @@ export class ServicesService {
     return this._http.post<any>("",question)
   }
 
-
-
+  public questionSearch(question:Question):Observable<any>{
+    return this._http.post<any>("",question)
+  }
 
 }

@@ -15,7 +15,11 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserNavbarComponent } from './user-navbar/user-navbar.component';
-
+import { DatePipe } from '@angular/common';
+import { SearchQuestionComponent } from './search-question/search-question.component';
+import { MatTableModule } from '@angular/material/table'
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatButtonModule } from '@angular/material/button'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,8 @@ import { UserNavbarComponent } from './user-navbar/user-navbar.component';
     AdminNavbarComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
-    UserNavbarComponent
+    UserNavbarComponent,
+    SearchQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -34,9 +39,14 @@ import { UserNavbarComponent } from './user-navbar/user-navbar.component';
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

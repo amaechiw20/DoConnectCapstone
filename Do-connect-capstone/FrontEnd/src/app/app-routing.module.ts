@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomeComponent } from './home/home.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { SearchQuestionComponent } from './search-question/search-question.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'loginsignupuser', component: LoginSignupComponent},
   { path: 'loginadmin', component: AdminLoginComponent},
   { path: 'admindashboard', component: AdminDashboardComponent},
-  { path: 'userdashboard', component: UserDashboardComponent}
+  { path: 'userdashboard', component: UserDashboardComponent},
+  { path: 'searchquestion', component: SearchQuestionComponent}
 ];
 
 @NgModule({

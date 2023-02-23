@@ -5,15 +5,20 @@
             <h3>Create New Question</h3>
             <form id="createquestion" #createquestionform="ngForm" (ngSubmit)="createQuestion()">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title" [(ngModel)]="question.title">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="topic" name="topic" placeholder="Choose a topic">
+                    <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic">
+                        <option selected>Choose a topic</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
                 </div>
                 <div class="form-group">
-                    <textarea name="description" id="description" cols="50" rows="5" placeholder="Description"></textarea>
+                    <textarea name="description" id="description" cols="50" rows="5" placeholder="Description" [(ngModel)]="question.description_question"></textarea>
                 </div>
-                <input type="file" name="file" id="file">
+                <input type="file" name="file" id="file" [(ngModel)]="question.img_src">
                 <button type="submit" class="btn btn-dark" id="btncreate" [disabled]="createquestionform.form.invalid">Create</button>
             </form>
         </div>
