@@ -9,13 +9,13 @@ import {MatTableDataSource} from '@angular/material/table';
   selector: 'app-search-question',
   templateUrl: './search-question.component.html',
   styleUrls: ['./search-question.component.css']
-  
 })
+
 export class SearchQuestionComponent {
   question = new Question();
   response = [];
   displayedColumns: string[] = ['id', 'topic', 'title', 'description_question', "action"];
-  dataSource = new MatTableDataSource<QuestionInterface>();
+  dataSource = new MatTableDataSource<QuestionInterface>(this.response);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   constructor(private _service:ServicesService, private _router: Router){
 

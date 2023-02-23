@@ -27,7 +27,7 @@ export class LoginSignupComponent implements OnInit {
     this._service.userLogin(this.user).subscribe(
       data => {
         console.log("response recieved")
-        this.response=data
+        localStorage.setItem('token', data.token);
         this._router.navigate(["/userdashboard"])
       },
       error => {

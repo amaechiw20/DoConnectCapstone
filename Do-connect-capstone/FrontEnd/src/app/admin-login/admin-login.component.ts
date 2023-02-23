@@ -25,7 +25,7 @@ export class AdminLoginComponent {
     this._service.adminLogin(this.admin).subscribe(
       data => {
         console.log("response recieved")
-        this.response=data;
+        localStorage.setItem("token",data.token)
         this._router.navigate(["/admindashboard"])
       },
       error => {

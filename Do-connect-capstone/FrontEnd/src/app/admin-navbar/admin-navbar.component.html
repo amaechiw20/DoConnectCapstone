@@ -25,12 +25,12 @@
 
         <li class="nav-item">
             <div id="signout">
-                <a class="nav-link" routerLink="/loginadmin" id="signout">Signout</a>
+                <a class="nav-link" id="signout" *ngIf="_service.isLoggedIn()" (click)="_service.logout()">Signout</a>
             </div>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" routerLink="/admin">admin</a>
+            <a class="nav-link" routerLink="/admin">{{name}} : admin</a>
         </li>
       </ul>
     </div>
