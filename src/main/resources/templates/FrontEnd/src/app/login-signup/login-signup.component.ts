@@ -11,6 +11,7 @@ import { User } from '../user';
 export class LoginSignupComponent implements OnInit {
   
   user = new User();
+  response:any;
   msg=''
   msgRS=''
   msgRF=''
@@ -26,7 +27,8 @@ export class LoginSignupComponent implements OnInit {
     this._service.userLogin(this.user).subscribe(
       data => {
         console.log("response recieved")
-        this._router.navigate(["/userAccount"])
+        localStorage.setItem('token', data.token);
+        this._router.navigate(["/userdashboard"])
       },
       error => {
         console.log("exception occurred")
