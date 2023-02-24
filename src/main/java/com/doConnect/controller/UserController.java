@@ -12,6 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,11 +42,7 @@ public class UserController {
 	
 	@Autowired
     private JwtUtil jwtUtil;
-	
-	@GetMapping("/")
-	public void Home(){
-		
-	}
+
 	
 	@GetMapping("/adduser")
 	public User addUser(@RequestBody User user) {
@@ -99,7 +96,7 @@ public class UserController {
 		return userRepository.findByUserType(userType);
 	}
 	
-	@GetMapping("/loginVerify")
+	@PostMapping("/loginVerify")
 	public String userLoginVerify(@RequestBody AuthRequest authRequest) throws Exception {
 		try {
             authenticationManager.authenticate(
