@@ -37,13 +37,6 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired
-    private AuthenticationManager authenticationManager;
-	
-	@Autowired
-    private JwtUtil jwtUtil;
-
-	
 	@GetMapping("/adduser")
 	public User addUser(@RequestBody User user) {
 		return userRepository.save(user);
@@ -97,14 +90,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/loginVerify")
-	public String userLoginVerify(@RequestBody AuthRequest authRequest) throws Exception {
-		try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
-            );
-        } catch (Exception ex) {
-            throw new Exception("inavalid username/password");
-        }
-        return jwtUtil.generateToken(authRequest.getUserName());
+	public String userLoginVerify(User u) {
+		return u.getName();
 	}
 }
