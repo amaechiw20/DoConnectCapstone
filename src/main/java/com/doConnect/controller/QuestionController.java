@@ -32,7 +32,6 @@ import com.doConnect.repository.QuestionRepository;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
-
 public class QuestionController {
 	
 	@Autowired

@@ -12,6 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,17 +36,6 @@ public class UserController {
 	
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-    private AuthenticationManager authenticationManager;
-	
-	@Autowired
-    private JwtUtil jwtUtil;
-	
-	@GetMapping("/")
-	public void Home(){
-		
-	}
 	
 	@GetMapping("/adduser")
 	public User addUser(@RequestBody User user) {
@@ -99,15 +89,8 @@ public class UserController {
 		return userRepository.findByUserType(userType);
 	}
 	
-	@GetMapping("/loginVerify")
-	public String userLoginVerify(@RequestBody AuthRequest authRequest) throws Exception {
-		try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword())
-            );
-        } catch (Exception ex) {
-            throw new Exception("inavalid username/password");
-        }
-        return jwtUtil.generateToken(authRequest.getUserName());
+	@PostMapping("/loginVerify")
+	public String userLoginVerify(User u) {
+		return u.getName();
 	}
 }
