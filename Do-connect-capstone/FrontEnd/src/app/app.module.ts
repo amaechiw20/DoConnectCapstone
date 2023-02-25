@@ -20,10 +20,12 @@ import { SearchQuestionComponent } from './search-question/search-question.compo
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatButtonModule } from '@angular/material/button';
-import { TokenInterceptorService } from './token-interceptor.service';
 import { PendingQuestionsComponent } from './pending-questions/pending-questions.component'
 import { AuthGuard } from './auth.guard';
 import { PendingAnswerComponent } from './pending-answer/pending-answer.component';
+import { QuestionDetailsComponent } from './question-details/question-details.component';
+import { ShowChatComponent } from './show-chat/show-chat.component';
+import { ChatComponent } from './chat/chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,10 @@ import { PendingAnswerComponent } from './pending-answer/pending-answer.componen
     UserNavbarComponent,
     SearchQuestionComponent,
     PendingQuestionsComponent,
-    PendingAnswerComponent
+    PendingAnswerComponent,
+    QuestionDetailsComponent,
+    ShowChatComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -52,11 +57,11 @@ import { PendingAnswerComponent } from './pending-answer/pending-answer.componen
   ],
   providers: [
     DatePipe, AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorService,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

@@ -56,7 +56,7 @@ export class ServicesService {
   }
 
   public userRegister(user:User):Observable<any>{
-    return this._http.post<any>("",user)
+    return this._http.post<any>("http://localhost:8080/adduser",user)
   }
 
   public adminLogin(admin:Admin):Observable<any>{
