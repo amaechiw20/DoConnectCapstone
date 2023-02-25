@@ -21,6 +21,7 @@ public class DoConnectApplication {
 	
 	@PostConstruct
     public void initUsers() {
+	repo.deleteAll();
         List<User> users = Stream.of(
                 new User(101, "ABC", "gyanendra", "password", "gsytec@gmail.com","ABC"),
                 new User(102, "user1", "pwd1", "user1@gmail.com","ABC","ABC"),
