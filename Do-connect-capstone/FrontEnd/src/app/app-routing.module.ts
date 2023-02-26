@@ -10,6 +10,7 @@ import { PendingQuestionsComponent } from './pending-questions/pending-questions
 import { AuthGuard } from './auth.guard';
 import { PendingAnswerComponent } from './pending-answer/pending-answer.component';
 import { ShowChatComponent } from './show-chat/show-chat.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'pendingquestion', component: PendingQuestionsComponent, canActivate: [AuthGuard]},
   { path: 'pendinganswer', component: PendingAnswerComponent, canActivate: [AuthGuard]},
   { path: 'chatwithus', component: ShowChatComponent, canActivate: [AuthGuard]},
+  { path: 'questiondetail', component: QuestionDetailComponent}
   
 ];
 

@@ -97,4 +97,12 @@ export class ServicesService {
     return this._http.put("",updateId)
   }
 
+  public chatUsers():Observable<any>{
+    return this._http.get("");
+  }
+
+  public detailQuestion():Observable<any>{
+    return this._http.get("")
+  }
+
 }

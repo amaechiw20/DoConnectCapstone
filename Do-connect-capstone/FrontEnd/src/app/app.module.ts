@@ -23,9 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { PendingQuestionsComponent } from './pending-questions/pending-questions.component'
 import { AuthGuard } from './auth.guard';
 import { PendingAnswerComponent } from './pending-answer/pending-answer.component';
-import { QuestionDetailsComponent } from './question-details/question-details.component';
 import { ShowChatComponent } from './show-chat/show-chat.component';
 import { ChatComponent } from './chat/chat.component';
+import { QuestionDetailComponent } from './question-detail/question-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +40,9 @@ import { ChatComponent } from './chat/chat.component';
     SearchQuestionComponent,
     PendingQuestionsComponent,
     PendingAnswerComponent,
-    QuestionDetailsComponent,
     ShowChatComponent,
-    ChatComponent
+    ChatComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,

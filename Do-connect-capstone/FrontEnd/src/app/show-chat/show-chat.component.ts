@@ -15,11 +15,15 @@ export class ShowChatComponent {
   displayedColumns: string[] = ['id',"name","action"];
   dataSource = new MatTableDataSource<UserInterface>(this.response);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  constructor(protected _router: Router){
+  constructor(private _service:ServicesService, private _router: Router){
   
   }
-
-
+  
+  ngOnInit(){
+    this._service.chatUsers().subscribe(res =>{
+        this.response = res;
+    })
+  }
 }
 
 export interface UserInterface{
