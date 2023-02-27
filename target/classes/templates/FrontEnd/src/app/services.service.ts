@@ -7,13 +7,22 @@ import { Question } from './question';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs'
 import { JwtHelperService } from '@auth0/angular-jwt'
+import { environment } from 'src/environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
+  private Url=environment.Url;
+
+  private requestHeader = new HttpHeaders(
+    {"No-Auth":"True"}
+  );
+
   private userpayload:any;
+
   constructor(private _http: HttpClient, private _router: Router) { 
     this.userpayload = this.decodeToken();
   }
@@ -40,37 +49,41 @@ export class ServicesService {
     return jwtHelper.decodeToken(token);
   }
   public isLoggedIn(){
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('jwtToken');
   }
 
   public getToken(){
-    return localStorage.getItem('token')
+    return localStorage.getItem('jwtToken')
   }
 
   public logout(){
-    localStorage.removeItem('token')
+    localStorage.removeItem('jwtToken')
     this._router.navigate(['/loginsignupuser'])
   }
+
   public userLogin(user:User):Observable<any>{
-    return this._http.post<any>("",user)
+    return this._http.post<any>(this.Url+"getLogin",user, {headers: this.requestHeader})
   }
 
   public userRegister(user:User):Observable<any>{
-    return this._http.post<any>("http://localhost:8080/adduser",user)
+    return this._http.post<any>(this.Url+"adduser",user, {headers: this.requestHeader})
   }
 
   public adminLogin(admin:Admin):Observable<any>{
-    return this._http.post<any>("",admin)
+    return this._http.post<any>(this.Url+"getLogin",admin, {headers: this.requestHeader})
   }
 
   public adminRegister(admin:Admin):Observable<any>{
-    return this._http.post<any>("",admin)
+    return this._http.post<any>(this.Url+"addadmin",admin)
   }
 
   public questionCreate(question:Question):Observable<any>{
-    return this._http.post<any>("",question)
+    return this._http.post<any>(this.Url+"addquestion",question)
   }
 
+  public allQuestions():Observable<any>{
+    return this._http.get(this.Url+"getallquestion");
+  }
   public questionSearch(question:Question):Observable<any>{
     return this._http.post<any>("",question)
   }
@@ -104,5 +117,4 @@ export class ServicesService {
   public detailQuestion():Observable<any>{
     return this._http.get("")
   }
-
 }

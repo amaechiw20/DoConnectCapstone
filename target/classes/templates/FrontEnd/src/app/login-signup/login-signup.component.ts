@@ -11,6 +11,7 @@ import { User } from '../user';
 export class LoginSignupComponent implements OnInit {
   
   user = new User();
+  user1 = new User();
   response:any;
   msg=''
   msgRS=''
@@ -24,10 +25,10 @@ export class LoginSignupComponent implements OnInit {
   }
 
   loginUser(){
-    this._service.userLogin(this.user).subscribe(
+    this._service.userLogin(this.user1).subscribe(
       data => {
         console.log("response recieved")
-        localStorage.setItem('token', data.token);
+        localStorage.setItem('jwtToken', data.jwtToken);
         this._router.navigate(["/userdashboard"])
       },
       error => {
@@ -50,5 +51,4 @@ export class LoginSignupComponent implements OnInit {
       }
     )
   }
-
 }
