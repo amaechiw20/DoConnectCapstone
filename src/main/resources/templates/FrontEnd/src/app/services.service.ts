@@ -56,7 +56,7 @@ export class ServicesService {
   }
 
   public userRegister(user:User):Observable<any>{
-    return this._http.post<any>("",user)
+    return this._http.post<any>("http://localhost:8080/adduser",user)
   }
 
   public adminLogin(admin:Admin):Observable<any>{
@@ -95,6 +95,14 @@ export class ServicesService {
 
   public answerUpdate(updateId):Observable<any>{
     return this._http.put("",updateId)
+  }
+
+  public chatUsers():Observable<any>{
+    return this._http.get("");
+  }
+
+  public detailQuestion():Observable<any>{
+    return this._http.get("")
   }
 
 }

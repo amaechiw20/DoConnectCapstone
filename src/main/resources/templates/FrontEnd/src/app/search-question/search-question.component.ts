@@ -17,7 +17,7 @@ export class SearchQuestionComponent {
   displayedColumns: string[] = ['id', 'topic', 'title', 'description_question', "action"];
   dataSource = new MatTableDataSource<QuestionInterface>(this.response);
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  constructor(private _service:ServicesService, private _router: Router){
+  constructor(private _service:ServicesService, protected _router: Router){
 
   }
 

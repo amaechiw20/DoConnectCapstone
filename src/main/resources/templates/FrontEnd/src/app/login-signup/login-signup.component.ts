@@ -45,6 +45,7 @@ export class LoginSignupComponent implements OnInit {
       },
       error => {
         console.log("exception occurred")
+        console.log(error)
         this.msgRF = "Registration Failed, please try again!"
       }
     )
