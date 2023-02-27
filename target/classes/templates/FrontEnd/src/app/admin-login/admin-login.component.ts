@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent {
   admin = new Admin();
+  response:any;
   msg=''
 
   constructor(private _service:ServicesService, private _router: Router){
@@ -24,6 +25,7 @@ export class AdminLoginComponent {
     this._service.adminLogin(this.admin).subscribe(
       data => {
         console.log("response recieved")
+        localStorage.setItem("token",data.token)
         this._router.navigate(["/admindashboard"])
       },
       error => {
