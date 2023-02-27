@@ -13,10 +13,7 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export class SearchQuestionComponent {
   question = new Question();
-  response = [];
-  displayedColumns: string[] = ['id', 'topic', 'title', 'description_question', "action"];
-  dataSource = new MatTableDataSource<QuestionInterface>(this.response);
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  response:any = [];
   constructor(private _service:ServicesService, protected _router: Router){
 
   }
@@ -26,6 +23,7 @@ export class SearchQuestionComponent {
       data => {
         console.log(data)
         this.response = data
+        console.log(this.response);
       },
       error => {
         console.log("exception occurred")

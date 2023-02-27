@@ -111,7 +111,7 @@ export class ServicesService {
   }
 
   public chatUsers():Observable<any>{
-    return this._http.get("");
+    return this._http.get(this.Url+"getallusers");
   }
 
   public detailQuestion():Observable<any>{

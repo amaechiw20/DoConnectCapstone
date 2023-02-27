@@ -10,10 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./pending-answer.component.css']
 })
 export class PendingAnswerComponent {
-  response = [];
-  displayedColumns: string[] = ['id','description', 'acreated_by', 'datetime',"action"];
-  dataSource = new MatTableDataSource<AnswerInterface>(this.response);
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  response:any = [];
   constructor(private _service:ServicesService, private _router: Router){
 
   }

@@ -11,10 +11,7 @@ import { ServicesService } from '../services.service';
 })
 export class ShowChatComponent {
 
-  response = [];
-  displayedColumns: string[] = ['id',"name","action"];
-  dataSource = new MatTableDataSource<UserInterface>(this.response);
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  response:any = [];
   constructor(private _service:ServicesService, private _router: Router){
   
   }
