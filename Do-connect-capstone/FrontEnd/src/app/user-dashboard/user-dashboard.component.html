@@ -3,6 +3,8 @@
     <app-user-navbar></app-user-navbar>
     <div id="forms">
             <h3>Create New Question</h3>
+            <small class="text text-success">{{msgRS}}</small>
+            <small class="text text-danger">{{msgRF}}</small>
             <form id="createquestion" #createquestionform="ngForm" (ngSubmit)="createQuestion()">
                 <div class="form-group">
                     <input type="text" class="form-control" id="title" name="title" placeholder="Title" [(ngModel)]="question.title">
