@@ -1,0 +1,57 @@
+<section class="container">
+  <br /><br />
+  <app-navbar></app-navbar>
+
+  <div id="forms">
+    <h2>Login Now!</h2>
+    <small class="text-danger">{{ msg }}</small>
+    <form id="loginform" #loginform="ngForm" (ngSubmit)="loginAdmin()">
+      <div class="form-group">
+        <label for="username" class="label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+          name="username"
+          [(ngModel)]="admin.username"
+          required
+          #username="ngModel"
+          [class.is-invalid]="username.invalid && username.touched"
+        />
+        <small
+          [class.d-none]="username.valid || username.untouched"
+          class="text-danger"
+          >Username is a required field!</small
+        >
+      </div>
+      <div class="form-group">
+        <label for="password" class="label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="admin.password"
+          required
+          minlength="8"
+          #password="ngModel"
+          [class.is-invalid]="password.invalid && password.touched"
+        />
+        <small
+          [class.d-none]="username.valid || username.untouched"
+          class="text-danger"
+          >Password is a required field!</small
+        >
+      </div>
+      <button
+        type="submit"
+        class="btn btn-dark"
+        [disabled]="loginform.form.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</section>

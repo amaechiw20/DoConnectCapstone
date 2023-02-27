@@ -1,0 +1,37 @@
+section {
+  background-color: lightblue;
+  width: 100%;
+  background-size: cover;
+  min-height: 100vh;
+}
+h4 {
+  color: black;
+  font-weight: bold;
+  margin-right: 10px;
+}
+#forms {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+#title {
+  width: 180%;
+  margin-left: 5%;
+}
+button {
+  margin-left: 15%;
+}
+#table {
+  width: 80%;
+  margin-top: 50px;
+  margin-left: 10%;
+}
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
