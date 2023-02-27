@@ -11,10 +11,7 @@ import { Router } from '@angular/router';
 })
 export class PendingQuestionsComponent {
 
-  response = [];
-  displayedColumns: string[] = ['id', 'img_src','topic', 'title', 'description_question', 'qcreated_by', 'datetime',"action"];
-  dataSource = new MatTableDataSource<QuestionInterface>(this.response);
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  response:any = [];
   constructor(private _service:ServicesService, private _router: Router){
 
   }
