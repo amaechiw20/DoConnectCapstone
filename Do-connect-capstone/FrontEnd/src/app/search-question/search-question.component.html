@@ -6,18 +6,16 @@
             <h4>Search the question</h4>
             <div class="form-group">
                 <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic"
-                required #topic="ngModel" [class.is-invalid]="topic.invalid && topic.touched">
-                <small [class.d-none]="topic.valid || topic.untouched" class="text-danger">Topic is a required field!</small>
+                required #topic="ngModel">
                     <option selected>Choose a topic</option>
                     <option value="java">Java</option>
                     <option value="server">Server</option>
                     <option value="python">Python</option>
-                  </select>
-            </div>
+                </select>
+              </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="title" name="title" placeholder="Question here" [(ngModel)]="question.title"
-                required #title="ngModel" [class.is-invalid]="title.invalid && title.touched">
-                <small [class.d-none]="title.valid || title.untouched" class="text-danger">Title is a required field!</small>>
+                required #title="ngModel">
             </div>
             <button type="submit" class="btn btn-dark" id="btnsearch" [disabled]="searchquestionform.form.invalid">Search</button>
         </form>

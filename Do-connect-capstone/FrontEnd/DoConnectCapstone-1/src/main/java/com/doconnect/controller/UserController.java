@@ -42,7 +42,7 @@ public class UserController {
 		return userService.AddAdmin(user);
 	}
 
-	// Login User
+	// Login Admin
 	@PostMapping("/getLogin")
 	public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 		return jwtService.createJwtToken(jwtRequest);
@@ -50,7 +50,6 @@ public class UserController {
 	
 	// get all users
 	@GetMapping("/getallusers")
-	@PreAuthorize("hasRole('Admin')")
 	public List<User> GetAllUsers(){
 		return userService.GetAllUsers();
 	}
@@ -77,7 +76,6 @@ public class UserController {
 	
 	//get all user type
 	@GetMapping("/getallbyusertype")
-	@PreAuthorize("hasRole('Admin')")
 	public List<User> GetAllUserType(@PathVariable String userType){
 		return userService.GetAllUserType(userType);
 	}	
