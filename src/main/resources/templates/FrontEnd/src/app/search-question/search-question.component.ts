@@ -22,7 +22,15 @@ export class SearchQuestionComponent {
   }
 
   ngOnInit(){
-    
+    this._service.allQuestions().subscribe(
+      data => {
+        console.log(data)
+        this.response = data
+      },
+      error => {
+        console.log("exception occurred")
+      }
+    );
   }
   
   searchQuestion(){
@@ -30,6 +38,7 @@ export class SearchQuestionComponent {
       data => {
         console.log("response recieved")
         this.response = data;
+        console.log(data)
       },
       error => {
         console.log("exception occurred")

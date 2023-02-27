@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'pendingquestion', component: PendingQuestionsComponent, canActivate: [AuthGuard]},
   { path: 'pendinganswer', component: PendingAnswerComponent, canActivate: [AuthGuard]},
   { path: 'chatwithus', component: ShowChatComponent, canActivate: [AuthGuard]},
-  { path: 'questiondetail', component: QuestionDetailComponent}
+  { path: 'questiondetail', component: QuestionDetailComponent, canActivate: [AuthGuard]}
   
 ];
 
