@@ -26,6 +26,8 @@ import { PendingAnswerComponent } from './pending-answer/pending-answer.componen
 import { ShowChatComponent } from './show-chat/show-chat.component';
 import { ChatComponent } from './chat/chat.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { TokenInterceptorService } from './token-interceptor.service';
+import { ServicesService } from './services.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,11 +59,12 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
   ],
   providers: [
     DatePipe, AuthGuard,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptorService,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    ServicesService
   ],
   bootstrap: [AppComponent]
 })

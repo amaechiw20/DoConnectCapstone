@@ -25,3 +25,8 @@ button{
 .form-group{
     margin-top: 20px;
 }
+#admin{
+    text-decoration: none;
+    color: black;
+    border: none;
+}
