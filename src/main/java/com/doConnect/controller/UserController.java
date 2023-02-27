@@ -1,96 +1,82 @@
-/**
- * 
- */
-package com.doConnect.controller;
+package com.doconnect.controller;
 
 import java.util.List;
-
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.doconnect.entity.JwtRequest;
+import com.doconnect.entity.JwtResponse;
+import com.doconnect.entity.User;
+import com.doconnect.service.JwtService;
+import com.doconnect.service.UserService;
 
-import com.doConnect.entity.User;
-import com.doConnect.exception.UserNotFoundException;
-import com.doConnect.repository.UserRepository;
-import com.doConnect.util.JwtUtil;
-
-import com.doConnect.entity.AuthRequest;
-
-/**
- * @author : Edward Lam
- * @date   : 2023-02-20
- */
-
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 	
-	@GetMapping("/adduser")
-	public User addUser(@RequestBody User user) {
-		return userRepository.save(user);
+	@PostConstruct
+	public void initAdminandUserType(){
+		userService.initAdminandUserType();
 	}
 	
-	@GetMapping("/addnewuser")
-	public User addNewUser(@RequestBody User user){
-		return userRepository.save(user);
+	@Autowired
+	private JwtService jwtService;
+	
+	//add user
+	@PostMapping("/adduser")
+	public User AddUser(@RequestBody User user) {
+		return userService.AddUser(user);
 	}
 	
-	@GetMapping("/getLogin")
-	public void getLogin(){
-		
+	@PostMapping("/addadmin")
+	public User AddAdmin(@RequestBody User user) {
+		return userService.AddAdmin(user);
 	}
-	
-	@GetMapping("/getallusers")
-	public List<User> getAllUser(){
-		return userRepository.findAll();
-	}
-	
-	@GetMapping("/getuserbyId")
-	public ResponseEntity<User> getUserbyId(@PathVariable long uid) {
-		User user = userRepository.findById( uid)
-				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
-		return ResponseEntity.ok(user);
-	}
-	
-	@GetMapping("/updateuser")
-	public ResponseEntity<User> updateUser(@PathVariable Long uid, @RequestBody User userDetails) {
-		User user = userRepository.findById(uid)
-				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
-		
-		user.setEmail(userDetails.getEmail());
-		user.setName(userDetails.getName());
-		user.setPassword(userDetails.getPassword());
-		user.setUsername(userDetails.getUsername());
-		user.setUserType(userDetails.getUserType());
 
-		User updatedUser = userRepository.save(user);
-		return ResponseEntity.ok(updatedUser);
+	// Login Admin
+	@PostMapping("/getLogin")
+	public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws Exception {
+		return jwtService.createJwtToken(jwtRequest);
 	}
 	
-	@GetMapping("/getbyname")
-	public List<User> getbyName(String name) {
-		return userRepository.findByName(name);
+	// get all users
+	@GetMapping("/getallusers")
+	public List<User> GetAllUsers(){
+		return userService.GetAllUsers();
 	}
 	
-	@GetMapping("/getbyalluserType")
-	public List<User> getbyAllUserType(String userType){
-		return userRepository.findByUserType(userType);
+	
+	//get a specific user by id
+	@GetMapping("/getuserbyId/{id}")
+	public ResponseEntity<User> GetUserbyId(@PathVariable Integer id){
+		return userService.GetUserbyId(id);
 	}
 	
-	@PostMapping("/loginVerify")
-	public String userLoginVerify(User u) {
-		return u.getName();
+	// update user details
+	@PutMapping("/updateuser/{id}")
+	public ResponseEntity<User> UpdateUser(@PathVariable Integer id, @RequestBody User userDetails){
+		return userService.UpdateUser(id, userDetails);
 	}
+	
+	//get user by name
+	@GetMapping("/getbyname/{name}")
+	public List<User> GetbyName(@PathVariable String name){
+		
+		return userService.GetbyName(name);
+	}
+	
+	//get all user type
+	@GetMapping("/getallbyusertype")
+	public List<User> GetAllUserType(@PathVariable String userType){
+		return userService.GetAllUserType(userType);
+	}	
 }

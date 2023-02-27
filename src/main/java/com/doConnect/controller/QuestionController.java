@@ -1,43 +1,32 @@
-/**
- * 
- */
-package com.doConnect.controller;
+package com.doconnect.controller;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.doConnect.entity.Question;
-import com.doConnect.exception.QuestionNotFoundException;
-import com.doConnect.repository.QuestionRepository;
+import com.doconnect.entity.Question;
+import com.doconnect.exception.QuestionNotFoundException;
+import com.doconnect.repo.QuestionRepository;
 
-
-
-
-/**
- * @author : Edward Lam
- * @date   : 2023-02-20
- */
-
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/")
 public class QuestionController {
 	
 	@Autowired
 	private QuestionRepository questionRepository;
 	
-	@GetMapping("/addquestion")
+	@PostMapping("/addquestion")
 	public Question addQuestion(@RequestBody Question q) {
 		return questionRepository.save(q);
 	
@@ -81,14 +70,8 @@ public class QuestionController {
 		return questionRepository.findByStatusFalse();
 	}
 	
-	@GetMapping("/getQuestionbytopic")
-	public List<Question> getQuestionbyTopic(String topic){
-		return questionRepository.findByTopic(topic);
+	@PostMapping("/searchquestion")
+	public List<Question> SearchQuestion(@RequestBody Question q){
+		return questionRepository.findByTopicAndTitle(q.getTopic(), q.getTitle());
 	}
-	
-	@GetMapping("/getquestionbyid")
-	public Optional<Question> getQuestionbyId(Long qid) {
-		return questionRepository.findById(qid);
-	}
-	
 }

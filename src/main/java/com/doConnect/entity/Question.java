@@ -1,7 +1,5 @@
-/**
- * 
- */
-package com.doConnect.entity;
+package com.doconnect.entity;
+
 
 import java.util.List;
 
@@ -82,6 +80,14 @@ public class Question {
 	
 	
 	
+	public Question() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	/**
 	 * @return the id
 	 */

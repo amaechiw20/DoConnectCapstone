@@ -1,46 +1,34 @@
-/**
- * 
- */
-package com.doConnect.controller;
+package com.doconnect.controller;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.doConnect.entity.Answer;
-import com.doConnect.entity.Question;
-import com.doConnect.entity.User;
-import com.doConnect.exception.AnswerNotFoundException;
-import com.doConnect.exception.QuestionNotFoundException;
-import com.doConnect.exception.UserNotFoundException;
-import com.doConnect.repository.AnswerRepository;
-import com.doConnect.repository.QuestionRepository;
-import com.doConnect.repository.UserRepository;
+import com.doconnect.entity.Answer;
+import com.doconnect.entity.Question;
+import com.doconnect.entity.User;
+import com.doconnect.exception.AnswerNotFoundException;
+import com.doconnect.exception.QuestionNotFoundException;
+import com.doconnect.exception.UserNotFoundException;
+import com.doconnect.repo.AnswerRepository;
+import com.doconnect.repo.QuestionRepository;
+import com.doconnect.repo.UserRepository;
 
-
-/**
- * @author : Edward Lam
- * @date   : 2023-02-20
- */
-
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/")
 public class CustomerController {
 	
-	
-	
+
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -51,19 +39,13 @@ public class CustomerController {
 	private AnswerRepository answerRepository;
 	
 	
-	@GetMapping("/")
-	public String home() {
-		return "Customer Controller";
-	}
-	
-	
-	@GetMapping("/User/adduser")
+	@GetMapping("/user/adduser")
 	public User addUser(@RequestBody User user) {
 		return userRepository.save(user);
 	}
 	
-	@GetMapping("/User/updateuser")
-	public ResponseEntity<User> UpdateUser(@PathVariable Long uid, @RequestBody User userDetails) {
+	@GetMapping("/user/updateuser")
+	public ResponseEntity<User> UpdateUser(@PathVariable Integer uid, @RequestBody User userDetails) {
 		User user = userRepository.findById(uid)
 				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
 		
@@ -71,39 +53,39 @@ public class CustomerController {
 		user.setName(userDetails.getName());
 		user.setPassword(userDetails.getPassword());
 		user.setUsername(userDetails.getUsername());
-		user.setUserType(userDetails.getUserType());
+//		user.setUserType(userDetails.getUserType());
 
 		User updatedUser = userRepository.save(user);
 		return ResponseEntity.ok(updatedUser);
 	}
 	
-	@GetMapping("/User/getbyLogin")
+	@GetMapping("/user/getLogin")
 	public void getLogin() {
 		
 	}
 	
-	@GetMapping("/User/getuserbyname")
+	@GetMapping("/user/getuserbyname")
 	public List<User> getUserbyName(String userType) {
-		return userRepository.findByUserType(userType);
+		return userRepository.findByUsertype(userType);
 	}
 	
-	@GetMapping("/User/getbyid")
+	@GetMapping("/user/getbyid")
 	public User GetbyId(int uid) {
 		return new User();
 	}
 	
-	@GetMapping ("/User/getallusers")
+	@GetMapping ("/user/getallusers")
 	public List<User> getallusers(){
-		return userRepository.findAll();
+		return (List<User>) userRepository.findAll();
 	}
 	
-	@GetMapping("/User/getbyalluserType")
+	@GetMapping("/user/getbyalluserType")
 	public List<User> getallCustomer(String userType){
-		return userRepository.findByUserType(userType);
+		return userRepository.findByUsertype(userType);
 	}
 	
-	@GetMapping ("/User/DeleteById")
-	public ResponseEntity<Map<String, Boolean>> userDeleteById(@PathVariable Long uid) {
+	@GetMapping ("/user/DeleteById")
+	public ResponseEntity<Map<String, Boolean>> userDeleteById(@PathVariable Integer uid) {
 		User user = userRepository.findById(uid)
 				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
 		
@@ -208,5 +190,4 @@ public class CustomerController {
 		Optional<Question> q = qr.findById(id);
 		return q.get().getAnswers();
 	}
-
 }

@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+D:\Cogent_Training\Labs\Git Workspace\DoConnectCapstone\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index

@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.doConnect.entity;
+package com.doconnect.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,35 +9,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- * @author : Edward Lam
- * @date   : 2023-02-20
- */
-
 @Entity
-@Table(name = "answers")
 public class Answer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@Column(name = "description")
 	private String description_answer;
-	
+
 	@Column(name = "image")
 	private String img_src;
-	
+
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "datetime")
 	private String datetime;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "question")
 	private Question question;
-	
+
 	// @OneToOne
 	@Column(name = "approved_by")
 	private String approved_by;
@@ -49,16 +40,6 @@ public class Answer {
 	@Column(name = "created_by")
 	private String created_by;
 
-	/**
-	 * @param id
-	 * @param description_answer
-	 * @param img_src
-	 * @param status
-	 * @param datetime
-	 * @param question
-	 * @param approved_by
-	 * @param created_by
-	 */
 	public Answer(int id, String description_answer, String img_src, String status, String datetime, Question question,
 			String approved_by, String created_by) {
 		super();
@@ -71,35 +52,20 @@ public class Answer {
 		this.approved_by = approved_by;
 		this.created_by = created_by;
 	}
-	
-	
 
-	/**
-	 * 
-	 */
 	public Answer() {
 		super();
+
 	}
 
-
-
-	/**
-	 * @return the id
-	 */
 	public long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the description_answer
-	 */
 	public String getDescription_answer() {
 		return description_answer;
 	}
@@ -194,7 +160,4 @@ public class Answer {
 	public void setCreated_by(String created_by) {
 		this.created_by = created_by;
 	}
-	
-	
-	
 }
