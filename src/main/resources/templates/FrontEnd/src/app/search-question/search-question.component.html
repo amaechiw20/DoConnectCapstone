@@ -5,24 +5,19 @@
         <form id="searchquestion" #searchquestionform="ngForm" (ngSubmit)="searchQuestion()" id="forms">
             <h4>Search the question</h4>
             <div class="form-group">
-                <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic">
+                <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic"
+                required #topic="ngModel">
                     <option selected>Choose a topic</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-            </div>
+                    <option value="java">Java</option>
+                    <option value="server">Server</option>
+                    <option value="python">Python</option>
+                </select>
+              </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="title" name="title" placeholder="Question here" [(ngModel)]="question.title">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Question here" [(ngModel)]="question.title"
+                required #title="ngModel">
             </div>
             <button type="submit" class="btn btn-dark" id="btnsearch" [disabled]="searchquestionform.form.invalid">Search</button>
         </form>
-    </div>
-
-    <div *ngFor="let res of response">
-      <span>{{res.id}}</span>
-      <span>{{res.topic}}</span>
-      
-    </div>
-    
+    </div>    
 </section>
