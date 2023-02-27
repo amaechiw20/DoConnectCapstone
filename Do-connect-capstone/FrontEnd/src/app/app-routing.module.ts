@@ -20,8 +20,8 @@ const routes: Routes = [
   { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard]},
   { path: 'userdashboard', component: UserDashboardComponent, canActivate: [AuthGuard]},
   { path: 'searchquestion', component: SearchQuestionComponent, canActivate: [AuthGuard]},
-  { path: 'pendingquestion', component: PendingQuestionsComponent, canActivate: [AuthGuard]},
-  { path: 'pendinganswer', component: PendingAnswerComponent, canActivate: [AuthGuard]},
+  { path: 'pendingquestions', component: PendingQuestionsComponent, canActivate: [AuthGuard]},
+  { path: 'pendinganswers', component: PendingAnswerComponent, canActivate: [AuthGuard]},
   { path: 'chatwithus', component: ShowChatComponent, canActivate: [AuthGuard]},
   { path: 'questiondetail', component: QuestionDetailComponent, canActivate: [AuthGuard]}
   

@@ -85,7 +85,7 @@ export class ServicesService {
     return this._http.get(this.Url+"getallquestion");
   }
   public questionSearch(question:Question):Observable<any>{
-    return this._http.post<any>("",question)
+    return this._http.post<any>(this.Url+"searchquestion",question)
   }
 
   public pendingQuestion():Observable<any>{

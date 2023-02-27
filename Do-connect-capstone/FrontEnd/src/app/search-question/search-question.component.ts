@@ -2,8 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Question } from '../question';
 import { ServicesService } from '../services.service';
 import { Router } from '@angular/router';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-search-question',
