@@ -19,7 +19,6 @@ import com.doconnect.entity.Question;
 import com.doconnect.entity.User;
 import com.doconnect.exception.AnswerNotFoundException;
 import com.doconnect.exception.QuestionNotFoundException;
-import com.doconnect.exception.UserNotFoundException;
 import com.doconnect.repo.AnswerRepository;
 import com.doconnect.repo.QuestionRepository;
 import com.doconnect.repo.UserRepository;

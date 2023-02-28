@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
@@ -33,7 +34,8 @@ import { ServicesService } from './services.service';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    LoginSignupComponent,
+    LoginComponent,
+    SignupComponent,
     AdminLoginComponent,
     AdminNavbarComponent,
     AdminDashboardComponent,

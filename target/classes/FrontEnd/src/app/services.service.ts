@@ -58,7 +58,7 @@ export class ServicesService {
 
   public logout(){
     localStorage.removeItem('jwtToken')
-    this._router.navigate(['/loginsignupuser'])
+    this._router.navigate(['/login'])
   }
 
   public userLogin(user:User):Observable<any>{

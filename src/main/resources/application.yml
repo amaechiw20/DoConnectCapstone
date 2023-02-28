@@ -3,7 +3,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/do_connect
     username: root
-    password: Apple12345678
+    password: mysqlroot
   jpa:
     hibernate.ddl-auto: create
     generate-ddl: true

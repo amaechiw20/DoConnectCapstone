@@ -3,12 +3,10 @@ package com.doconnect.controller;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.doconnect.entity.JwtRequest;
@@ -19,24 +17,24 @@ import com.doconnect.service.UserService;
 
 @RestController
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@PostConstruct
-	public void initAdminandUserType(){
+	public void initAdminandUserType() {
 		userService.initAdminandUserType();
 	}
-	
+
 	@Autowired
 	private JwtService jwtService;
-	
-	//add user
+
+	// add user
 	@PostMapping("/adduser")
 	public User AddUser(@RequestBody User user) {
 		return userService.AddUser(user);
 	}
-	
+
 	@PostMapping("/addadmin")
 	public User AddAdmin(@RequestBody User user) {
 		return userService.AddAdmin(user);
@@ -47,24 +45,23 @@ public class UserController {
 	public JwtResponse createJwtToken(@RequestBody JwtRequest jwtRequest) throws Exception {
 		return jwtService.createJwtToken(jwtRequest);
 	}
-	
+
 	// get all users
 	@GetMapping("/getallusers")
-	public List<User> GetAllUsers(){
+	public List<User> GetAllUsers() {
 		return userService.GetAllUsers();
 	}
-	
-	
-	//get user by name
+
+	// get user by name
 	@GetMapping("/getbyname/{name}")
-	public List<User> GetbyName(@PathVariable String name){
-		
+	public List<User> GetbyName(@PathVariable String name) {
+
 		return userService.GetbyName(name);
 	}
-	
-	//get all user type
+
+	// get all user type
 	@GetMapping("/getallbyusertype")
-	public List<User> GetAllUserType(@PathVariable String userType){
+	public List<User> GetAllUserType(@PathVariable String userType) {
 		return userService.GetAllUserType(userType);
-	}	
+	}
 }

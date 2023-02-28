@@ -1,0 +1,30 @@
+<section class="container">
+    <br><br>
+    <app-navbar></app-navbar>
+    <div id="login form">
+        <div>
+            <h2>Login User!</h2>
+            <small class="text-success">{{msgRS}}</small>
+            <small class="text-danger">{{msgRF}}</small>
+        </div>
+        <div>
+            <button class="btn"routerLink="/loginadmin" id="admin">Admin login</button>
+            <small class="text-danger">{{msg}}</small>
+            <form id="loginform" #loginform="ngForm" (ngSubmit)="loginUser()">
+                <div class="form-group">
+                    <label for="username" class="label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" [(ngModel)]="user1.username" 
+                    required #username1="ngModel" [class.is-invalid]="username1.invalid && username1.touched">
+                    <small [class.d-none]="username1.valid || username1.untouched" class="text-danger">Username is a required field!</small>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" [(ngModel)]="user1.password" 
+                    required minlength="8" #password1="ngModel" [class.is-invalid]="password1.invalid && password1.touched">
+                    <small [class.d-none]="password1.valid || password1.untouched" class="text-danger">Password is a required field!</small>
+                </div>
+                <button type="submit" class="btn btn-dark" [disabled]="loginform.form.invalid">Login</button>
+            </form>
+        </div>
+    </div>
+</section>
