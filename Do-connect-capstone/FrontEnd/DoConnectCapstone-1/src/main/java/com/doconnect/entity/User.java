@@ -2,8 +2,9 @@ package com.doconnect.entity;
 
 import java.util.Set;
 
-
+import javax.annotation.Generated;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,10 +23,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@Column(name = "userid", columnDefinition = "serial", updatable = false)
+	private int userid;
+	
 	private String name;
+	
+	@Id
 	private String username;
 	private String password;
 	private String email;
@@ -41,11 +44,11 @@ public class User {
 	private Set<UserType> usertype;
 	
 	
-	public int getId() {
-		return id;
+	public int getUserId() {
+		return userid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(int userid) {
+		this.userid = userid;
 	}
 	public String getName() {
 		return name;

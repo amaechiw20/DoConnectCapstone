@@ -55,18 +55,6 @@ public class UserController {
 	}
 	
 	
-	//get a specific user by id
-	@GetMapping("/getuserbyId/{id}")
-	public ResponseEntity<User> GetUserbyId(@PathVariable Integer id){
-		return userService.GetUserbyId(id);
-	}
-	
-	// update user details
-	@PutMapping("/updateuser/{id}")
-	public ResponseEntity<User> UpdateUser(@PathVariable Integer id, @RequestBody User userDetails){
-		return userService.UpdateUser(id, userDetails);
-	}
-	
 	//get user by name
 	@GetMapping("/getbyname/{name}")
 	public List<User> GetbyName(@PathVariable String name){

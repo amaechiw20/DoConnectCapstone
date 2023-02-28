@@ -32,12 +32,10 @@ public class UserService {
 		UserType adminType = new UserType();
 		adminType.setUsertype("Admin");
 		adminType.setUsertypedescription("Administrator Role");
-		//userTypeRepo.save(adminType);
-		
+
 		UserType userType = new UserType();
 		userType.setUsertype("User");
 		userType.setUsertypedescription("A System User Role");
-		//userTypeRepo.save(userType);
 		
 		User admin = new User();
 		admin.setName("Natanim Issa");
@@ -57,8 +55,7 @@ public class UserService {
 		Set<UserType> usertypeU = new HashSet<>();
 		usertypeU.add(userType);
 		user.setType(usertypeU);
-		userRepo.save(user);
-		
+		userRepo.save(user);	
 	}
 	
 	//add user
@@ -86,14 +83,14 @@ public class UserService {
 	
 	
 	//get a specific user by id
-	public ResponseEntity<User> GetUserbyId(Integer id){
+	public ResponseEntity<User> GetUserbyId(String id){
 		User user = userRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("User with id :" + id+" doesn't exist!!!"));
 		
 		return ResponseEntity.ok(user);
 	}
 	
 	// update user details
-	public ResponseEntity<User> UpdateUser(Integer id, User userDetails){
+	public ResponseEntity<User> UpdateUser(String id, User userDetails){
 		User user = userRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("User with id :" + id+" doesn't exist!!!"));
 		
 		user.setName(userDetails.getName());
