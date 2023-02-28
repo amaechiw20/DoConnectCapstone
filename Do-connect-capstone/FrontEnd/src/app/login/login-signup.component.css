@@ -6,13 +6,9 @@ section{
 }
 #forms{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
-#vertical{
-    border-left: 6px solid black;
-    height: 500px;
 }
 
 .label{

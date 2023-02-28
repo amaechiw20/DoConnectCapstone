@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HomeComponent } from './home/home.component';
-import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { LoginSignupComponent } from './login/login-signup.component';
 import { SearchQuestionComponent } from './search-question/search-question.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { PendingQuestionsComponent } from './pending-questions/pending-questions.component';
@@ -11,11 +11,13 @@ import { AuthGuard } from './auth.guard';
 import { PendingAnswerComponent } from './pending-answer/pending-answer.component';
 import { ShowChatComponent } from './show-chat/show-chat.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent },
-  { path: 'loginsignupuser', component: LoginSignupComponent},
+  { path: 'login', component: LoginSignupComponent},
+  { path: 'signup', component: SignUpComponent},
   { path: 'loginadmin', component: AdminLoginComponent},
   { path: 'userdashboard', component: UserDashboardComponent, canActivate: [AuthGuard]},
   { path: 'searchquestion', component: SearchQuestionComponent, canActivate: [AuthGuard]},

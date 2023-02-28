@@ -21,7 +21,7 @@ export class LoginSignupComponent implements OnInit {
   }
 
   ngOnInit(){
-    
+    // this._service.user=this.loginUser();
   }
 
   loginUser(){
@@ -30,24 +30,11 @@ export class LoginSignupComponent implements OnInit {
         console.log("response recieved")
         localStorage.setItem('jwtToken', data.jwtToken);
         this._router.navigate(["/userdashboard"])
+        this.response = data;
       },
       error => {
         console.log("exception occurred")
         this.msg = "Bad creentials, Enter valid credentials!"
-      }
-    )
-  }
-
-  registerUser(){
-    this._service.userRegister(this.user).subscribe(
-      data => {
-        console.log("response recieved")
-        this.msgRS="User registered succesfully! Login Now!"
-      },
-      error => {
-        console.log("exception occurred")
-        console.log(error)
-        this.msgRF = "Registration Failed, please try again!"
       }
     )
   }

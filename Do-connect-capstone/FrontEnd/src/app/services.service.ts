@@ -17,6 +17,9 @@ export class ServicesService {
 
   private Url=environment.Url;
 
+  public user:any;
+  public admin:any;
+
   private requestHeader = new HttpHeaders(
     {"No-Auth":"True"}
   );
@@ -24,30 +27,8 @@ export class ServicesService {
   private userpayload:any;
 
   constructor(private _http: HttpClient, private _router: Router) { 
-    this.userpayload = this.decodeToken();
   }
 
-  public name$ = new BehaviorSubject<string>("")
-
-  public getNameFromStore(){
-    return this.name$.asObservable();
-  }
-
-  public setFullNameForStore(name:string){
-    this.name$.next(name)
-  }
-
-  public getNameFromToken(){
-    if(this.userpayload){
-      return this.userpayload.name;
-    }
-  }
-
-  public decodeToken(){
-    const jwtHelper = new JwtHelperService();
-    const token = this.getToken()!;
-    return jwtHelper.decodeToken(token);
-  }
   public isLoggedIn(){
     return !!localStorage.getItem('jwtToken');
   }
@@ -58,7 +39,8 @@ export class ServicesService {
 
   public logout(){
     localStorage.removeItem('jwtToken')
-    this._router.navigate(['/loginsignupuser'])
+    localStorage.clear();
+    this._router.navigate(['/login'])
   }
 
   public userLogin(user:User):Observable<any>{

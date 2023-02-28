@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { LoginSignupComponent } from './login/login-signup.component';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
@@ -28,6 +28,7 @@ import { ChatComponent } from './chat/chat.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { ServicesService } from './services.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { ServicesService } from './services.service';
     PendingAnswerComponent,
     ShowChatComponent,
     ChatComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
