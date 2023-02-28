@@ -1,0 +1,63 @@
+<section class="container">
+    <br><br>
+    <app-user-navbar></app-user-navbar>
+    <div>
+        <style>
+            table, th, td {
+                border: 1px solid white;
+                border-collapse: collapse;
+            }
+            th, td {
+                background-color: #96D4D4;
+            }
+            table {
+             width: 100%;
+            }
+            th {
+                width: 20%;
+            }
+
+         </style>
+        <form id="searchquestion" #searchquestionform="ngForm" (ngSubmit)="searchQuestion()" id="forms">
+            <h4>Search the question</h4>
+            <div class="form-group">
+                <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic"
+                required #topic="ngModel">
+                    <option selected>Choose a topic</option>
+                    <option value="java">Java</option>
+                    <option value="server">Server</option>
+                    <option value="python">Python</option>
+                </select>
+              </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Question here" [(ngModel)]="question.title"
+                required #title="ngModel">
+            </div>
+            <button type="submit" class="btn btn-dark" id="btnsearch">Search</button>
+        </form>
+
+        <div>
+            <table>
+                <th>ID</th>
+                <th>Topic</th>
+                <th>title</th>
+                <th>Status</th>
+                <th>Datetime</th>
+            </table>
+        </div>
+        <div *ngFor="let res of response">
+            <table>
+                <tr>
+                  <th><span>{{res.id}}</span></th>
+                  <th><span>{{res.topic}}</span></th>
+                  <th><span>{{res.title}}</span></th>
+                  <th><span>{{res.status}}</span></th>
+                  <th><span>{{res.datetime}}</span></th>
+                </tr>
+            </table>
+            
+            
+      
+        </div>
+    </div>    
+</section>

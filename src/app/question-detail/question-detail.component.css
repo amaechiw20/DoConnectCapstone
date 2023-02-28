@@ -1,0 +1,79 @@
+section{
+    background-color: lightblue;
+    width: 100%;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+#container{
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 10%;
+}
+
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#quest{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10%;
+    height: 300px;
+}
+
+#questCont{
+    display: flex;
+    flex-direction: column;
+}
+
+#questCont button{
+    margin-top: 15px;
+    width: 80%;
+}
+
+#ans{
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10%;
+}
+
+#answer{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+h3{
+    text-align: center;
+}
+
+#questContainer{
+    width: 60%;
+    margin-right: 15px;
+}
+
+#ansContainer{
+    width: 40%;
+}
+
+#imgQuestion{
+    width: 80%;
+    border-radius: 15px;
+}
+
+input{
+    margin-bottom: 10px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+#table{
+    margin: 0px;
+    padding: 0px;
+}
