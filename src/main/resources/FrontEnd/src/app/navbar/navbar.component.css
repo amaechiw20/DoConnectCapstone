@@ -13,15 +13,16 @@ nav{
 #homeLink{
     color: black;
 }
-#loginsignup {
+.loginsignup {
     background-color: black;
     border-radius: 6px;
     display: flex;
     flex-direction: row;
     padding: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-
-#loginsignup a{
+.loginsignup a{
     color: white;
     text-decoration: none;
 }

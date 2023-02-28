@@ -9,13 +9,8 @@ import { ServicesService } from '../services.service';
 export class AdminNavbarComponent {
   constructor(protected _service: ServicesService){}
   
-  public name = "";
+  // public name = this._service.admin.name;
 
   ngOnInit(){
-    this._service.getNameFromStore()
-    .subscribe(res => {
-      let nameFromToken = this._service.getNameFromToken();
-      this.name = res || nameFromToken
-    })
   }
 }

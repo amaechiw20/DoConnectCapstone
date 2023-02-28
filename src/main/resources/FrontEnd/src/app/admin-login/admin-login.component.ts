@@ -18,7 +18,7 @@ export class AdminLoginComponent {
   }
 
   ngOnInit(){
-    
+    // this._service.admin=this.loginAdmin();
   }
 
   loginAdmin(){
