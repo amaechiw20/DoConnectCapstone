@@ -9,7 +9,6 @@ import { User } from '../user';
 })
 export class LoginComponent implements OnInit {
   user = new User();
-  user1 = new User();
   response: any;
   msg = '';
   msgRS = '';
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   loginUser() {
-    this._service.userLogin(this.user1).subscribe(
+    this._service.userLogin(this.user).subscribe(
       (data) => {
         console.log('response recieved');
         localStorage.setItem('jwtToken', data.jwtToken);
