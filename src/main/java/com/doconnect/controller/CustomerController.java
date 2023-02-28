@@ -44,20 +44,20 @@ public class CustomerController {
 		return userRepository.save(user);
 	}
 	
-	@GetMapping("/user/updateuser")
-	public ResponseEntity<User> UpdateUser(@PathVariable Integer uid, @RequestBody User userDetails) {
-		User user = userRepository.findById(uid)
-				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
-		
-		user.setEmail(userDetails.getEmail());
-		user.setName(userDetails.getName());
-		user.setPassword(userDetails.getPassword());
-		user.setUsername(userDetails.getUsername());
+//	@GetMapping("/user/updateuser")
+//	public ResponseEntity<User> UpdateUser(@PathVariable Integer uid, @RequestBody User userDetails) {
+//		User user = userRepository.findById(uid)
+//				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
+//		
+//		user.setEmail(userDetails.getEmail());
+//		user.setName(userDetails.getName());
+//		user.setPassword(userDetails.getPassword());
+//		user.setUsername(userDetails.getUsername());
 //		user.setUserType(userDetails.getUserType());
-
-		User updatedUser = userRepository.save(user);
-		return ResponseEntity.ok(updatedUser);
-	}
+//
+//		User updatedUser = userRepository.save(user);
+//		return ResponseEntity.ok(updatedUser);
+//	}
 	
 	@GetMapping("/user/getLogin")
 	public void getLogin() {
@@ -84,16 +84,16 @@ public class CustomerController {
 		return userRepository.findByUsertype(userType);
 	}
 	
-	@GetMapping ("/user/DeleteById")
-	public ResponseEntity<Map<String, Boolean>> userDeleteById(@PathVariable Integer uid) {
-		User user = userRepository.findById(uid)
-				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
-		
-		userRepository.delete(user);
-		Map<String, Boolean> response = new HashMap<>();
-		response.put("deleted", Boolean.TRUE);
-		return ResponseEntity.ok(response);
-	}
+//	@GetMapping ("/user/DeleteById")
+//	public ResponseEntity<Map<String, Boolean>> userDeleteById(@PathVariable Integer uid) {
+//		User user = userRepository.findById(uid)
+//				.orElseThrow(() -> new UserNotFoundException("User not exist with id :" + uid));
+//		
+//		userRepository.delete(user);
+//		Map<String, Boolean> response = new HashMap<>();
+//		response.put("deleted", Boolean.TRUE);
+//		return ResponseEntity.ok(response);
+//	}
 	
 	@GetMapping("/Question/addquestion")
 	public Question addQuestion(@RequestBody Question q) {
