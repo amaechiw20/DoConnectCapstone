@@ -1,0 +1,30 @@
+<section class="container">
+    <br><br>
+    <app-user-navbar></app-user-navbar>
+    <div id="table">
+      <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-dark table-solid">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let res of response">
+                  <tr>
+                    <th scope="row">{{res.id}}</th>
+                    <td>{{res.name}}</td>
+                    <td>
+                      <button type="button" class="btn btn-success">Chat Now</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+  </div> 
+</section>
