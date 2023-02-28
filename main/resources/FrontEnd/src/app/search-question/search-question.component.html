@@ -2,22 +2,6 @@
     <br><br>
     <app-user-navbar></app-user-navbar>
     <div>
-        <style>
-            table, th, td {
-                border: 1px solid white;
-                border-collapse: collapse;
-            }
-            th, td {
-                background-color: #96D4D4;
-            }
-            table {
-             width: 100%;
-            }
-            th {
-                width: 20%;
-            }
-
-         </style>
         <form id="searchquestion" #searchquestionform="ngForm" (ngSubmit)="searchQuestion()" id="forms">
             <h4>Search the question</h4>
             <div class="form-group">
@@ -33,31 +17,37 @@
                 <input type="text" class="form-control" id="title" name="title" placeholder="Question here" [(ngModel)]="question.title"
                 required #title="ngModel">
             </div>
-            <button type="submit" class="btn btn-dark" id="btnsearch">Search</button>
+            <button type="submit" class="btn btn-dark" id="btnsearch" [disabled]="searchquestionform.form.invalid" (click)="searchQuestion()">Search</button>
         </form>
-
-        <div>
-            <table>
-                <th>ID</th>
-                <th>Topic</th>
-                <th>title</th>
-                <th>Status</th>
-                <th>Datetime</th>
-            </table>
-        </div>
-        <div *ngFor="let res of response">
-            <table>
-                <tr>
-                  <th><span>{{res.id}}</span></th>
-                  <th><span>{{res.topic}}</span></th>
-                  <th><span>{{res.title}}</span></th>
-                  <th><span>{{res.status}}</span></th>
-                  <th><span>{{res.datetime}}</span></th>
-                </tr>
-            </table>
-            
-            
-      
-        </div>
-    </div>    
+    </div>   
+    <div id="table">
+        <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <table class="table table-dark table-solid">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Topic</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let res of response">
+                    <tr>
+                      <th scope="row">{{res.id}}</th>
+                      <td>{{res.topic}}</td>
+                      <td>{{res.title}}</td>
+                      <td>{{res.description_question}}</td>
+                      <td>
+                        <button type="button" class="btn btn-success" (click)="setId(res.id)">Show Details</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div> 
 </section>
