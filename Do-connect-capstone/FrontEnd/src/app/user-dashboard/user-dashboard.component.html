@@ -7,10 +7,14 @@
             <small class="text text-danger">{{msgRF}}</small>
             <form id="createquestion" #createquestionform="ngForm" (ngSubmit)="createQuestion()">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Title" [(ngModel)]="question.title">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title" [(ngModel)]="question.title"
+                    required #title="ngModel" [class.is-invalid]="title.invalid && title.touched">
+                    <small [class.d-none]="title.valid || title.untouched" class="text-danger">Title is a required field!</small>
                 </div>
                 <div class="form-group">
-                    <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic">
+                    <select class="form-select" aria-label="Default select example" name="topic" id="topic" [(ngModel)]="question.topic"
+                    required #topic="ngModel" [class.is-invalid]="topic.invalid && topic.touched">
+                    <small [class.d-none]="topic.valid || topic.untouched" class="text-danger">Tpoic is a required field!</small>
                         <option selected>Choose a topic</option>
                         <option value="Java">Java</option>
                         <option value="Server">Server</option>
@@ -18,7 +22,10 @@
                       </select>
                 </div>
                 <div class="form-group">
-                    <textarea name="description" id="description" cols="50" rows="5" placeholder="Description" [(ngModel)]="question.description_question"></textarea>
+                    <textarea name="description" id="description" cols="50" rows="5" placeholder="Description" [(ngModel)]="question.description_question"
+                    required #description_question="ngModel" [class.is-invalid]="description_question.invalid && description_question.touched"></textarea>
+                    <br>
+                    <small [class.d-none]="description_question.valid || description_question.untouched" class="text-danger">Description is a required field!</small>
                 </div>
                 <input type="file" name="file" id="file" [(ngModel)]="question.img_src">
                 <button type="submit" class="btn btn-dark" id="btncreate" [disabled]="createquestionform.form.invalid">Create</button>

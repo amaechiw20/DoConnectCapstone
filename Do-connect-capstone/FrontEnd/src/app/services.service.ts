@@ -19,6 +19,7 @@ export class ServicesService {
 
   public user:any;
   public admin:any;
+  public showId=1;
 
   private requestHeader = new HttpHeaders(
     {"No-Auth":"True"}
@@ -79,7 +80,7 @@ export class ServicesService {
   }
 
   public questionUpdate(updateId):Observable<any>{
-    return this._http.put("",updateId)
+    return this._http.put(`${this.Url}updatequestionstatus/${updateId}`,null)
   }
   public pendingAnswer():Observable<any>{
     return this._http.get("");
@@ -97,6 +98,6 @@ export class ServicesService {
   }
 
   public detailQuestion():Observable<any>{
-    return this._http.get("")
+    return this._http.get(`${this.Url}getquestionbyid/${this.showId}`)
   }
 }

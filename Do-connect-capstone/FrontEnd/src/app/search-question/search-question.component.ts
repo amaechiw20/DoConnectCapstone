@@ -42,7 +42,8 @@ export class SearchQuestionComponent {
   }
 
   setId(showId:number){
-    this.id = showId;
+    this._service.showId = showId;
+    this._router.navigate(["/questiondetail"])
   }
 }
 

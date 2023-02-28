@@ -8,6 +8,7 @@ import { User } from '../user';
   templateUrl: './login-signup.component.html',
   styleUrls: ['./login-signup.component.css']
 })
+
 export class LoginSignupComponent implements OnInit {
   
   user = new User();

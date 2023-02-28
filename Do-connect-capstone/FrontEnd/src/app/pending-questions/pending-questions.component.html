@@ -28,7 +28,7 @@
                     <td>{{res.qcreated_by}}</td>
                     <td>{{res.datetime}}</td>
                     <td id="actions">
-                      <button class="btn btn-success">Approve</button>
+                      <button class="btn btn-success" (click)="approveQuestionStatus(res.id)">Approve</button>
                       <button class="btn btn-danger" (click)="deleteQuestion(res.id)">Remove</button>
                     </td>
                   </tr>

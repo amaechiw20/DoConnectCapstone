@@ -1,6 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component } from '@angular/core';
 import { ServicesService } from '../services.service';
 import { Router } from '@angular/router';
 
@@ -12,16 +10,13 @@ import { Router } from '@angular/router';
 })
 export class QuestionDetailComponent {
 
-  response = [];
-  displayedColumns: string[] = ['id', 'title', 'topic', 'description_question'];
-  dataSource = new MatTableDataSource<QuestionInterface>(this.response);
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  response:any = [];
   constructor(private _service:ServicesService, private _router: Router){
 
   }
   ngOnInit(){
     this._service.detailQuestion().subscribe(res =>{
-        this.response = res;
+      this.response = res
     })
   }
 }

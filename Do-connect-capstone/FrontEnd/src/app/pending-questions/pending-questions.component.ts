@@ -22,7 +22,14 @@ export class PendingQuestionsComponent {
   }
 
   approveQuestionStatus(updateId){
-    this._service.questionUpdate(updateId);
+    this._service.questionUpdate(updateId).subscribe(
+      data => {
+        console.log("response received");
+      },
+      error => {
+        console.log("exception occurred")
+      }
+    );
   }
 
   deleteQuestion(deleteId:number){

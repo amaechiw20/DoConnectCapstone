@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,18 +35,19 @@ public class QuestionController {
 	
 	}
 	
-	@GetMapping("/updatequestion")
-	public ResponseEntity<Question> updateQuestion(@PathVariable Integer id, @RequestBody Question questionBody){
-		Question question = questionRepository.findById(id)
+	@GetMapping("/getquestionbyid/{id}")
+	public ResponseEntity<Question> gqtquestionbyid(@PathVariable Integer id){
+		Question question =  questionRepository.findById(id)
+				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
+		return ResponseEntity.ok(question);
+	}
+	
+	@PutMapping("/updatequestionstatus/{id}")
+	public ResponseEntity<Question> updateQuestion(@PathVariable Integer id){
+		Question question = (Question) questionRepository.findById(id)
 				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
 		
-		question.setAnswers(questionBody.getAnswers());
-		question.setDatetime(questionBody.getDatetime());
-		question.setDescription_question(questionBody.getDescription_question());
-		question.setImage_src(questionBody.getImage_src());
-		question.setStatus(questionBody.getStatus());
-		question.setTitle(questionBody.getTitle());
-		question.setTopic(questionBody.getTopic());
+		question.setStatus("Approved");
 		
 		Question updatedQuestion = questionRepository.save(question);
 		return ResponseEntity.ok(updatedQuestion);
@@ -80,5 +83,4 @@ public class QuestionController {
 	public List<Question> PendingQuestion(){
 		return questionRepository.findByStatus("Pending");
 	}
-	
 }
