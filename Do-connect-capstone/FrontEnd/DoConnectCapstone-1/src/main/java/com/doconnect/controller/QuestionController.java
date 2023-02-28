@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,7 @@ public class QuestionController {
 	}
 	
 	@GetMapping("/updatequestion")
-	public ResponseEntity<Question> updateQuestion(@PathVariable Long id, @RequestBody Question questionBody){
+	public ResponseEntity<Question> updateQuestion(@PathVariable Integer id, @RequestBody Question questionBody){
 		Question question = questionRepository.findById(id)
 				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
 		
@@ -49,8 +50,8 @@ public class QuestionController {
 		return ResponseEntity.ok(updatedQuestion);
 	}
 	
-	@GetMapping("/deletequestionbyid")
-	public ResponseEntity<Map<String, Boolean>> deleteQuestionbyId(@PathVariable Long id) {
+	@DeleteMapping("/deletequestionbyid/{id}")
+	public ResponseEntity<Map<String, Boolean>> deleteQuestionbyId(@PathVariable Integer id) {
 		Question question = questionRepository.findById(id)
 				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
 		
@@ -74,4 +75,10 @@ public class QuestionController {
 	public List<Question> SearchQuestion(@RequestBody Question q){
 		return questionRepository.findByTopicAndTitle(q.getTopic(), q.getTitle());
 	}
+	
+	@GetMapping("/pendingquestion")
+	public List<Question> PendingQuestion(){
+		return questionRepository.findByStatus("Pending");
+	}
+	
 }

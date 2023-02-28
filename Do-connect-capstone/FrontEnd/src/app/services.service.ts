@@ -89,11 +89,11 @@ export class ServicesService {
   }
 
   public pendingQuestion():Observable<any>{
-    return this._http.get("");
+    return this._http.get(this.Url+"pendingquestion");
   }
 
   public questionDelete(deleteId):Observable<any>{
-    return this._http.delete("",deleteId);
+    return this._http.delete(`${this.Url}deletequestionbyid/${deleteId}`);
   }
 
   public questionUpdate(updateId):Observable<any>{

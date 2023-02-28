@@ -21,14 +21,20 @@ export class PendingQuestionsComponent {
     })
   }
 
-  updateQuestionStatus(updateId){
+  approveQuestionStatus(updateId){
     this._service.questionUpdate(updateId);
   }
 
   deleteQuestion(deleteId:number){
-    this._service.questionDelete(deleteId);
+    this._service.questionDelete(deleteId).subscribe(
+      data => {
+        console.log("response recieved")
+      },
+      error => {
+        console.log("exception occurred!")
+      } 
+    );
   }
-
 }
 
 export interface QuestionInterface {

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class SearchQuestionComponent {
+  id:number;
   question = new Question();
   response:any = [];
   constructor(private _service:ServicesService, protected _router: Router){
@@ -19,9 +20,8 @@ export class SearchQuestionComponent {
   ngOnInit(){
     this._service.allQuestions().subscribe(
       data => {
-        console.log(data)
+        console.log("response recieved")
         this.response = data
-        console.log(this.response);
       },
       error => {
         console.log("exception occurred")
@@ -34,12 +34,15 @@ export class SearchQuestionComponent {
       data => {
         console.log("response recieved")
         this.response = data;
-        console.log(data)
       },
       error => {
         console.log("exception occurred")
       }
     )
+  }
+
+  setId(showId:number){
+    this.id = showId;
   }
 }
 
