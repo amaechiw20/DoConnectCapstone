@@ -10,3 +10,12 @@ section{
     margin-left: 10%;
 }
 
+#actions{
+    display: flex;
+    flex-direction: column;
+}
+
+#actions button {
+    padding: 0px;
+    margin-bottom: 5px;
+}

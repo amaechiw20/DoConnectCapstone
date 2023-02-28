@@ -101,7 +101,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/Question/updatequestion")
-	public ResponseEntity<Question> updateQuestion(@PathVariable Long id, @RequestBody Question questionBody) {
+	public ResponseEntity<Question> updateQuestion(@PathVariable Integer id, @RequestBody Question questionBody) {
 		Question question = questionRepository.findById(id)
 				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + id));
 		
@@ -118,7 +118,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/Question/deletequestionbyid")
-	public  ResponseEntity<Map<String, Boolean>> deleteQuestionbyId(@PathVariable Long qid) {
+	public  ResponseEntity<Map<String, Boolean>> deleteQuestionbyId(@PathVariable Integer qid) {
 		Question question = questionRepository.findById(qid)
 				.orElseThrow(() -> new QuestionNotFoundException("Question not exist with id :" + qid));
 		
@@ -144,7 +144,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/Question/getquestionbyid")
-	public Optional<Question> getQuestionbyId(Long qid) {
+	public Optional<Question> getQuestionbyId(Integer qid) {
 		return questionRepository.findById(qid);
 	}
 	
@@ -186,7 +186,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/Answer/getAnswersbyQuestionID")
-	public List<Answer> getAnswerbyQuestionId(@PathVariable Long id, QuestionRepository qr) {
+	public List<Answer> getAnswerbyQuestionId(@PathVariable Integer id, QuestionRepository qr) {
 		Optional<Question> q = qr.findById(id);
 		return q.get().getAnswers();
 	}

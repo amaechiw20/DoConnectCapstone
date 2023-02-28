@@ -26,7 +26,7 @@ export class AdminLoginComponent {
       (data:any) => {
         this.response=data;
         localStorage.setItem("jwtToken",data.jwtToken)
-        this._router.navigate(["/admindashboard"])
+        this._router.navigate(["/pendingquestions"])
       },
       error => {
         console.log("exception occurred")

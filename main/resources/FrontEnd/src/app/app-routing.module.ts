@@ -17,7 +17,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'loginsignupuser', component: LoginSignupComponent},
   { path: 'loginadmin', component: AdminLoginComponent},
-  { path: 'admindashboard', component: AdminDashboardComponent, canActivate: [AuthGuard]},
   { path: 'userdashboard', component: UserDashboardComponent, canActivate: [AuthGuard]},
   { path: 'searchquestion', component: SearchQuestionComponent, canActivate: [AuthGuard]},
   { path: 'pendingquestions', component: PendingQuestionsComponent, canActivate: [AuthGuard]},

@@ -19,9 +19,10 @@ import com.doconnect.entity.Question;
  * @date   : 2023-02-20
  */
 @Repository
-public interface QuestionRepository extends JpaRepository<Question, Long>{
+public interface QuestionRepository extends JpaRepository<Question, Integer>{
 	List<Question> findByStatusFalse();
 	List<Question> findByTopic(String topic);
 	List<Question> findByTopicAndTitle(String topic, String title);
+	List<Question> findByStatus(String string);
 	
 }
